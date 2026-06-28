@@ -1,0 +1,46 @@
+import Navbar from "../components/Navbar";
+import MarketCard from "../components/MarketCard";
+
+export default async function CryptoPage() {
+  const res = await fetch(
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,solana,ripple,binancecoin&order=market_cap_desc&sparkline=true&price_change_percentage=24h",
+    {
+      next: { revalidate: 60 },
+    }
+  );
+
+  const coins = await res.json();
+  console.log(coins[0].sparkline_in_7d.price);
+  console.log(coins);
+
+  return (
+    <main>
+      <Navbar />
+
+      <h1>Crypto</h1>
+
+      <div className="grid">
+
+        {coins.map((coin: any) => (
+          <MarketCard
+            key={coin.id}
+            logo={`/crypto/${coin.symbol}.svg`}
+            name={coin.name}
+            title={
+              coin.name.toLowerCase() === coin.symbol.toLowerCase()
+                ? ""
+                : coin.symbol.toUpperCase()
+            }
+            price={`$${coin.current_price.toLocaleString()}`}
+            change={`${coin.price_change_percentage_24h.toFixed(2)}%`}
+            positive={coin.price_change_percentage_24h >= 0}
+            sparkline={coin.sparkline_in_7d.price}
+
+
+          />
+        ))}
+
+      </div>
+    </main>
+  );
+}

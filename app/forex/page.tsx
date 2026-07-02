@@ -1,54 +1,94 @@
 import Navbar from "../components/Navbar";
 import MarketCard from "../components/MarketCard";
 
-export default function ForexPage() {
+type ForexPair = {
+  title: string;
+  symbol: "JPY" | "EUR" | "GBP" | "CAD";
+  inverse: boolean;
+};
+
+export default async function ForexPage() {
+  const res = await fetch("https://api.frankfurter.app/latest?from=USD&to=JPY,EUR,GBP,CAD", {
+    next: { revalidate: 60 },
+  });
+
+  const data = await res.json();
+  const previousRes = await fetch(
+    `https://api.frankfurter.app/2026-06-25?from=USD&to=JPY,EUR,GBP,CAD`,
+    {
+      next: { revalidate: 60 },
+    }
+  );
+
+  const previousData = await previousRes.json();
+  const changes = {
+    JPY:
+      ((data.rates.JPY - previousData.rates.JPY) /
+        previousData.rates.JPY) *
+      100,
+
+    EUR:
+      ((1 / data.rates.EUR - 1 / previousData.rates.EUR) /
+        (1 / previousData.rates.EUR)) *
+      100,
+
+    GBP:
+      ((1 / data.rates.GBP - 1 / previousData.rates.GBP) /
+        (1 / previousData.rates.GBP)) *
+      100,
+
+    CAD:
+      ((data.rates.CAD - previousData.rates.CAD) /
+        previousData.rates.CAD) *
+      100,
+  };
+
+  const pairs: ForexPair[] = [
+    {
+      title: "🇺🇸🇯🇵 USD/JPY",
+      symbol: "JPY",
+      inverse: false,
+    },
+    {
+      title: "🇪🇺🇺🇸 EUR/USD",
+      symbol: "EUR",
+      inverse: true,
+    },
+    {
+      title: "🇬🇧🇺🇸 GBP/USD",
+      symbol: "GBP",
+      inverse: true,
+    },
+    {
+      title: "🇺🇸🇨🇦 USD/CAD",
+      symbol: "CAD",
+      inverse: false,
+    },
+  ];
+
   return (
     <main>
       <Navbar />
       <h1>Forex</h1>
 
-      <p className="market-status">Forex mood: US dollar stronger today 💵</p>
-
       <div className="grid">
-        <MarketCard
-          title="🇺🇸 DXY"
-          price="104.25"
-          change="+0.4%"
-          positive={true}
-          sparkline="0,28 20,22 40,24 60,18 80,15 100,12"
-          subtext="The US dollar is gaining strength today"
-          featured={true}
-        />
 
-        <MarketCard
-          title="🇺🇸🇯🇵 USD/JPY"
-          price="156.80"
-          change="+0.3%"
-          positive={true}
-          sparkline="0,35 20,25 40,30 60,15 80,18 100,8"
-        />
-        <MarketCard
-          title="🇪🇺🇺🇸 EUR/USD"
-          price="1.0840"
-          change="-0.2%"
-          positive={false}
-          sparkline="0,30 20,28 40,32 60,26 80,20 100,18"
-        />
+        {pairs.map((pair) => {
+          const rawRate = data.rates[pair.symbol];
+          const displayRate = pair.inverse ? 1 / rawRate : rawRate;
+          const decimals = pair.symbol === "JPY" ? 2 : 4;
+          const change = changes[pair.symbol];
 
-        <MarketCard
-          title="🇬🇧🇺🇸 GBP/USD"
-          price="1.2700"
-          change="-0.1%"
-          positive={false}
-          sparkline="0,40 20,35 40,25 60,28 80,18 100,12"
-        />
-        <MarketCard
-          title="🇺🇸🇨🇦 USD/CAD"
-          price="1.3650"
-          change="+0.2%"
-          positive={true}
-          sparkline="0,20 20,22 40,18 60,25 80,30 100,38"
-        />
+          return (
+            <MarketCard
+              key={pair.symbol}
+              title={pair.title}
+              price={displayRate.toFixed(decimals)}
+              change={`${change.toFixed(2)}%`}
+              positive={change >= 0}
+            />
+          );
+        })}
       </div>
     </main>
   );

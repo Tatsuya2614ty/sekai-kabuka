@@ -35,7 +35,7 @@ export default async function CryptoPage() {
             change={`${coin.price_change_percentage_24h.toFixed(2)}%`}
             positive={coin.price_change_percentage_24h >= 0}
             sparkline={coin.sparkline_in_7d.price}
-
+            href={`/markets/${coin.id}`}
 
           />
         ))}

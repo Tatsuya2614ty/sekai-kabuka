@@ -10,7 +10,7 @@ type USMarket = {
   subtext?: string;
   featured?: boolean;
   customClass?: string;
-  symbol?: string;
+  href?: string;
 };
 type YahooIndexData = {
   price: string;
@@ -59,26 +59,29 @@ export default async function Home() {
       price: sp500.price,
       change: sp500.change,
       positive: sp500.positive,
-      subtext: "US market remains strong today",
       featured: true,
+      href: "/markets/sp500",
     },
     {
       title: "🇺🇸 Nasdaq",
       price: nasdaq.price,
       change: nasdaq.change,
       positive: nasdaq.positive,
+      href: "/markets/nasdaq",
     },
     {
       title: "🇺🇸 Dow Jones",
       price: dow.price,
       change: dow.change,
       positive: dow.positive,
+      href: "/markets/dow",
     },
     {
       title: "🇺🇸 Russell 2000",
       price: russell.price,
       change: russell.change,
       positive: russell.positive,
+      href: "/markets/russell",
     },
     {
       title: "🇺🇸 VIX",
@@ -86,12 +89,14 @@ export default async function Home() {
       change: vix.change,
       positive: vix.positive,
       customClass: "fear",
+      href: "/markets/vix",
     },
     {
       title: "🇺🇸 US 10Y",
       price: us10y.price,
       change: us10y.change,
       positive: us10y.positive,
+      href: "/markets/us10y",
     },
   ];
   return (
@@ -112,6 +117,7 @@ export default async function Home() {
             subtext={market.subtext}
             featured={market.featured}
             customClass={market.customClass}
+            href={market.href}
           />
         ))}
       </div>

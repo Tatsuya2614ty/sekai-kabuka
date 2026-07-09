@@ -78,17 +78,33 @@ const marketConfig = {
         tradingViewSymbol: "OANDA:XAGUSD",
     },
     wti: {
-  title: "WTI Oil",
-  tradingViewSymbol: "TVC:USOIL",
-},
-naturalgas: {
-  title: "Natural Gas",
-  tradingViewSymbol: "CAPITALCOM:NATURALGAS",
-},
-copper: {
-  title: "Copper",
-  tradingViewSymbol: "CAPITALCOM:COPPER",
-},
+        title: "WTI Oil",
+        tradingViewSymbol: "TVC:USOIL",
+    },
+    naturalgas: {
+        title: "Natural Gas",
+        tradingViewSymbol: "CAPITALCOM:NATURALGAS",
+    },
+    copper: {
+        title: "Copper",
+        tradingViewSymbol: "CAPITALCOM:COPPER",
+    },
+    usdjpy: {
+        title: "USD/JPY",
+        tradingViewSymbol: "FX:USDJPY",
+    },
+    eurusd: {
+        title: "EUR/USD",
+        tradingViewSymbol: "FX:EURUSD",
+    },
+    gbpusd: {
+        title: "GBP/USD",
+        tradingViewSymbol: "FX:GBPUSD",
+    },
+    usdcad: {
+        title: "USD/CAD",
+        tradingViewSymbol: "FX:USDCAD",
+    },
 };
 
 type MarketPageProps = {

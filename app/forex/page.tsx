@@ -5,6 +5,7 @@ type ForexPair = {
   title: string;
   symbol: "JPY" | "EUR" | "GBP" | "CAD";
   inverse: boolean;
+  href: string;
 };
 
 export default async function ForexPage() {
@@ -48,21 +49,25 @@ export default async function ForexPage() {
       title: "🇺🇸🇯🇵 USD/JPY",
       symbol: "JPY",
       inverse: false,
+      href: "/markets/usdjpy",
     },
     {
       title: "🇪🇺🇺🇸 EUR/USD",
       symbol: "EUR",
       inverse: true,
+      href: "/markets/eurusd",
     },
     {
       title: "🇬🇧🇺🇸 GBP/USD",
       symbol: "GBP",
       inverse: true,
+      href: "/markets/gbpusd",
     },
     {
       title: "🇺🇸🇨🇦 USD/CAD",
       symbol: "CAD",
       inverse: false,
+      href: "/markets/usdcad",
     },
   ];
 
@@ -86,6 +91,7 @@ export default async function ForexPage() {
               price={displayRate.toFixed(decimals)}
               change={`${change.toFixed(2)}%`}
               positive={change >= 0}
+              href={pair.href}
             />
           );
         })}

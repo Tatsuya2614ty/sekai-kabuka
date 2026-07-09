@@ -49,6 +49,26 @@ const marketConfig = {
         title: "BNB",
         tradingViewSymbol: "BINANCE:BNBUSDT",
     },
+    nikkei: {
+        title: "Nikkei 225",
+        tradingViewSymbol: "OSE:NK2251!",
+    },
+    dax: {
+        title: "DAX",
+        tradingViewSymbol: "XETR:DAX",
+    },
+    ftse: {
+        title: "FTSE 100",
+        tradingViewSymbol: "CAPITALCOM:UK100",
+    },
+    hangseng: {
+        title: "Hang Seng",
+        tradingViewSymbol: "HSI:HSI",
+    },
+    eurostoxx: {
+        title: "Euro Stoxx 50",
+        tradingViewSymbol: "CAPITALCOM:EU50",
+    },
 };
 
 type MarketPageProps = {

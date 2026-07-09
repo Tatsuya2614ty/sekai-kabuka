@@ -6,6 +6,7 @@ type CommodityMarket = {
   price: string;
   change: string;
   positive: boolean;
+  href?: string;
 };
 
 type YahooCommodityData = {
@@ -55,30 +56,35 @@ export default async function CommoditiesPage() {
       price: gold.price,
       change: gold.change,
       positive: gold.positive,
+      href: "/markets/gold",
     },
     {
       title: "🥈 Silver",
       price: silver.price,
       change: silver.change,
       positive: silver.positive,
+      href: "/markets/silver",
     },
     {
       title: "🛢️ WTI Oil",
       price: wti.price,
       change: wti.change,
       positive: wti.positive,
+      href: "/markets/wti",
     },
     {
       title: "🔥 Natural Gas",
       price: naturalGas.price,
       change: naturalGas.change,
       positive: naturalGas.positive,
+      href: "/markets/naturalgas",
     },
     {
       title: "🔩 Copper",
       price: copper.price,
       change: copper.change,
       positive: copper.positive,
+      href: "/markets/copper",
     },
   ];
 
@@ -95,6 +101,7 @@ export default async function CommoditiesPage() {
             price={market.price}
             change={market.change}
             positive={market.positive}
+            href={market.href}
           />
         ))}
       </div>

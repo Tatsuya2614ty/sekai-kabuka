@@ -69,6 +69,26 @@ const marketConfig = {
         title: "Euro Stoxx 50",
         tradingViewSymbol: "CAPITALCOM:EU50",
     },
+    gold: {
+        title: "Gold",
+        tradingViewSymbol: "OANDA:XAUUSD",
+    },
+    silver: {
+        title: "Silver",
+        tradingViewSymbol: "OANDA:XAGUSD",
+    },
+    wti: {
+  title: "WTI Oil",
+  tradingViewSymbol: "TVC:USOIL",
+},
+naturalgas: {
+  title: "Natural Gas",
+  tradingViewSymbol: "CAPITALCOM:NATURALGAS",
+},
+copper: {
+  title: "Copper",
+  tradingViewSymbol: "CAPITALCOM:COPPER",
+},
 };
 
 type MarketPageProps = {

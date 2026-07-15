@@ -74,7 +74,7 @@ export default async function ForexPage() {
   return (
     <main>
       <Navbar />
-      <h1>Forex</h1>
+      
 
       <div className="grid">
 

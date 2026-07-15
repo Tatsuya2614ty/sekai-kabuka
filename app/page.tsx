@@ -2,12 +2,11 @@ import Navbar from "./components/Navbar";
 import MarketCard from "./components/MarketCard";
 
 type USMarket = {
-
   title: string;
   price: string;
   change: string;
   positive: boolean;
-  subtext?: string;
+  sparkline: number[];
   featured?: boolean;
   customClass?: string;
   href?: string;
@@ -16,12 +15,12 @@ type YahooIndexData = {
   price: string;
   change: string;
   positive: boolean;
+  sparkline: number[];
 };
-
 
 async function getYahooIndex(symbol: string): Promise<YahooIndexData> {
   const res = await fetch(
-    `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}`,
+    `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?range=1d&interval5m`,
     {
       next: { revalidate: 60 },
     }
@@ -29,6 +28,7 @@ async function getYahooIndex(symbol: string): Promise<YahooIndexData> {
 
   const data = await res.json();
   const meta = data.chart.result[0].meta;
+  const prices = data.chart.result[0].indicators.quote[0].close;
   const price = meta.regularMarketPrice.toLocaleString("en-US");
   const changePercent =
     ((meta.regularMarketPrice - meta.previousClose) / meta.previousClose) * 100;
@@ -38,6 +38,7 @@ async function getYahooIndex(symbol: string): Promise<YahooIndexData> {
     price,
     change,
     positive: changePercent >= 0,
+    sparkline: prices,
   };
 }
 
@@ -53,12 +54,12 @@ export default async function Home() {
 
   const markets: USMarket[] = [
 
-
     {
       title: "🇺🇸 S&P 500",
       price: sp500.price,
       change: sp500.change,
       positive: sp500.positive,
+      sparkline: sp500.sparkline,
       featured: true,
       href: "/markets/sp500",
     },
@@ -67,6 +68,7 @@ export default async function Home() {
       price: nasdaq.price,
       change: nasdaq.change,
       positive: nasdaq.positive,
+      sparkline: nasdaq.sparkline,
       href: "/markets/nasdaq",
     },
     {
@@ -74,6 +76,7 @@ export default async function Home() {
       price: dow.price,
       change: dow.change,
       positive: dow.positive,
+      sparkline: dow.sparkline,
       href: "/markets/dow",
     },
     {
@@ -81,6 +84,7 @@ export default async function Home() {
       price: russell.price,
       change: russell.change,
       positive: russell.positive,
+      sparkline: russell.sparkline,
       href: "/markets/russell",
     },
     {
@@ -88,6 +92,7 @@ export default async function Home() {
       price: vix.price,
       change: vix.change,
       positive: vix.positive,
+      sparkline: vix.sparkline,
       customClass: "fear",
       href: "/markets/vix",
     },
@@ -96,14 +101,13 @@ export default async function Home() {
       price: us10y.price,
       change: us10y.change,
       positive: us10y.positive,
+      sparkline: us10y.sparkline,
       href: "/markets/us10y",
     },
   ];
   return (
     <main>
       <Navbar />
-
-      <h1>World Market Dashboard</h1>
 
       <div className="grid">
 
@@ -114,7 +118,7 @@ export default async function Home() {
             price={market.price}
             change={market.change}
             positive={market.positive}
-            subtext={market.subtext}
+            sparkline={market.sparkline}
             featured={market.featured}
             customClass={market.customClass}
             href={market.href}

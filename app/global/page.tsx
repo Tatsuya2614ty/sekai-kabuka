@@ -89,7 +89,6 @@ export default async function GlobalPage() {
     return (
         <main>
             <Navbar />
-            <h1>Global Markets</h1>
 
             <div className="grid">
                 {markets.map((market) => (

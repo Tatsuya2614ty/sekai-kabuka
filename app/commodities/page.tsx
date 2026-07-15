@@ -91,7 +91,6 @@ export default async function CommoditiesPage() {
   return (
     <main>
       <Navbar />
-      <h1>Commodities</h1>
 
       <div className="grid">
         {markets.map((market) => (

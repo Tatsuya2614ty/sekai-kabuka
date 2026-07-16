@@ -6,6 +6,7 @@ type GlobalMarket = {
     price: string;
     change: string;
     positive: boolean;
+    sparkline: number[];
     href?: string;
 };
 
@@ -13,11 +14,12 @@ type YahooIndexData = {
     price: string;
     change: string;
     positive: boolean;
+    sparkline: number[];
 };
 
 async function getYahooIndex(symbol: string): Promise<YahooIndexData> {
     const res = await fetch(
-        `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}`,
+        `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?range=1d&interval=5m`,
         {
             next: { revalidate: 60 },
         }
@@ -25,6 +27,7 @@ async function getYahooIndex(symbol: string): Promise<YahooIndexData> {
 
     const data = await res.json();
     const meta = data.chart.result[0].meta;
+    const prices = data.chart.result[0].indicators.quote[0].close;
 
     const price = meta.regularMarketPrice.toLocaleString("en-US");
 
@@ -37,6 +40,7 @@ async function getYahooIndex(symbol: string): Promise<YahooIndexData> {
         price,
         change,
         positive: changePercent >= 0,
+        sparkline: prices,
     };
 }
 
@@ -55,6 +59,7 @@ export default async function GlobalPage() {
             price: nikkei.price,
             change: nikkei.change,
             positive: nikkei.positive,
+            sparkline: nikkei.sparkline,
             href: "/markets/nikkei",
         },
         {
@@ -62,6 +67,7 @@ export default async function GlobalPage() {
             price: dax.price,
             change: dax.change,
             positive: dax.positive,
+            sparkline: dax.sparkline,
             href: "/markets/dax",
         },
         {
@@ -69,6 +75,7 @@ export default async function GlobalPage() {
             price: ftse.price,
             change: ftse.change,
             positive: ftse.positive,
+            sparkline: ftse.sparkline,
             href: "/markets/ftse",
         },
         {
@@ -76,6 +83,7 @@ export default async function GlobalPage() {
             price: hangSeng.price,
             change: hangSeng.change,
             positive: hangSeng.positive,
+            sparkline: hangSeng.sparkline,
             href: "/markets/hangseng",
         },
         {
@@ -83,6 +91,7 @@ export default async function GlobalPage() {
             price: euroStoxx.price,
             change: euroStoxx.change,
             positive: euroStoxx.positive,
+            sparkline: euroStoxx.sparkline,
             href: "/markets/eurostoxx",
         },
     ];
@@ -98,6 +107,7 @@ export default async function GlobalPage() {
                         price={market.price}
                         change={market.change}
                         positive={market.positive}
+                        sparkline={market.sparkline}
                         href={market.href}
                     />
                 ))}

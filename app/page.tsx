@@ -20,7 +20,7 @@ type YahooIndexData = {
 
 async function getYahooIndex(symbol: string): Promise<YahooIndexData> {
   const res = await fetch(
-    `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?range=1d&interval5m`,
+    `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?range=1d&interval=5m`,
     {
       next: { revalidate: 60 },
     }

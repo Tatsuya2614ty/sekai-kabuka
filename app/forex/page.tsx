@@ -3,70 +3,86 @@ import MarketCard from "../components/MarketCard";
 
 type ForexPair = {
   title: string;
-  symbol: "JPY" | "EUR" | "GBP" | "CAD";
-  inverse: boolean;
+  price: string;
+  change: string;
+  positive: boolean;
+  sparkline: number[];
   href: string;
 };
 
-export default async function ForexPage() {
-  const res = await fetch("https://api.frankfurter.app/latest?from=USD&to=JPY,EUR,GBP,CAD", {
-    next: { revalidate: 60 },
-  });
+type YahooForexData = {
+  price: string;
+  change: string;
+  positive: boolean;
+  sparkline: number[];
+}
 
-  const data = await res.json();
-  const previousRes = await fetch(
-    `https://api.frankfurter.app/2026-06-25?from=USD&to=JPY,EUR,GBP,CAD`,
+async function getYahooForex(symbol: string): Promise<YahooForexData> {
+  const res = await fetch(
+    `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?range=1d&interval=5m`,
     {
       next: { revalidate: 60 },
     }
   );
 
-  const previousData = await previousRes.json();
-  const changes = {
-    JPY:
-      ((data.rates.JPY - previousData.rates.JPY) /
-        previousData.rates.JPY) *
-      100,
+  const data = await res.json();
+  const meta = data.chart.result[0].meta;
+  const prices = data.chart.result[0].indicators.quote[0].close;
+  const price = meta.regularMarketPrice.toLocaleString("en-US");
+  const changePercent =
+    ((meta.regularMarketPrice - meta.previousClose) / meta.previousClose) * 100;
+  const change = `${changePercent >= 0 ? "+" : ""}${changePercent.toFixed(2)}%`;
 
-    EUR:
-      ((1 / data.rates.EUR - 1 / previousData.rates.EUR) /
-        (1 / previousData.rates.EUR)) *
-      100,
-
-    GBP:
-      ((1 / data.rates.GBP - 1 / previousData.rates.GBP) /
-        (1 / previousData.rates.GBP)) *
-      100,
-
-    CAD:
-      ((data.rates.CAD - previousData.rates.CAD) /
-        previousData.rates.CAD) *
-      100,
+  // Return price, change, and chart data
+  return {
+    price,
+    change,
+    positive: changePercent >= 0,
+    sparkline: prices,
   };
+}
+
+export default async function ForexPage() {
+
+  // Get real Forex data from Yahoo Finance
+  const [usdjpy, eurusd, gbpusd, usdcad] = await Promise.all([
+    getYahooForex("JPY=X"),
+    getYahooForex("EURUSD=X"),
+    getYahooForex("GBPUSD=X"),
+    getYahooForex("CAD=X"),
+  ]);
 
   const pairs: ForexPair[] = [
     {
       title: "🇺🇸🇯🇵 USD/JPY",
-      symbol: "JPY",
-      inverse: false,
+      price: usdjpy.price,
+      change: usdjpy.change,
+      positive: usdjpy.positive,
+      sparkline: usdjpy.sparkline,
       href: "/markets/usdjpy",
     },
     {
       title: "🇪🇺🇺🇸 EUR/USD",
-      symbol: "EUR",
-      inverse: true,
+      price: eurusd.price,
+      change: eurusd.change,
+      positive: eurusd.positive,
+      sparkline: eurusd.sparkline,
       href: "/markets/eurusd",
     },
     {
       title: "🇬🇧🇺🇸 GBP/USD",
-      symbol: "GBP",
-      inverse: true,
+      price: gbpusd.price,
+      change: gbpusd.change,
+      positive: gbpusd.positive,
+      sparkline: gbpusd.sparkline,
       href: "/markets/gbpusd",
     },
     {
       title: "🇺🇸🇨🇦 USD/CAD",
-      symbol: "CAD",
-      inverse: false,
+      price: usdcad.price,
+      change: usdcad.change,
+      positive: usdcad.positive,
+      sparkline: usdcad.sparkline,
       href: "/markets/usdcad",
     },
   ];
@@ -74,23 +90,17 @@ export default async function ForexPage() {
   return (
     <main>
       <Navbar />
-      
-
       <div className="grid">
 
         {pairs.map((pair) => {
-          const rawRate = data.rates[pair.symbol];
-          const displayRate = pair.inverse ? 1 / rawRate : rawRate;
-          const decimals = pair.symbol === "JPY" ? 2 : 4;
-          const change = changes[pair.symbol];
-
           return (
             <MarketCard
-              key={pair.symbol}
+              key={pair.title}
               title={pair.title}
-              price={displayRate.toFixed(decimals)}
-              change={`${change.toFixed(2)}%`}
-              positive={change >= 0}
+              price={pair.price}
+              change={pair.change}
+              positive={pair.positive}
+              sparkline={pair.sparkline}
               href={pair.href}
             />
           );

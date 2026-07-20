@@ -6,6 +6,7 @@ type CommodityMarket = {
   price: string;
   change: string;
   positive: boolean;
+  sparkline: number[];
   href?: string;
 };
 
@@ -13,11 +14,12 @@ type YahooCommodityData = {
   price: string;
   change: string;
   positive: boolean;
+  sparkline: number[];
 };
 
 async function getYahooCommodity(symbol: string): Promise<YahooCommodityData> {
   const res = await fetch(
-    `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}`,
+    `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?range=1d&interval=5m`,
     {
       next: { revalidate: 60 },
     }
@@ -25,7 +27,7 @@ async function getYahooCommodity(symbol: string): Promise<YahooCommodityData> {
 
   const data = await res.json();
   const meta = data.chart.result[0].meta;
-
+  const prices = data.chart.result[0].indicators.quote[0].close;
   const price = meta.regularMarketPrice.toLocaleString("en-US");
 
   const changePercent =
@@ -37,6 +39,7 @@ async function getYahooCommodity(symbol: string): Promise<YahooCommodityData> {
     price,
     change,
     positive: changePercent >= 0,
+    sparkline: prices,
   };
 }
 
@@ -56,6 +59,7 @@ export default async function CommoditiesPage() {
       price: gold.price,
       change: gold.change,
       positive: gold.positive,
+      sparkline: gold.sparkline,
       href: "/markets/gold",
     },
     {
@@ -63,6 +67,7 @@ export default async function CommoditiesPage() {
       price: silver.price,
       change: silver.change,
       positive: silver.positive,
+      sparkline: silver.sparkline,
       href: "/markets/silver",
     },
     {
@@ -70,6 +75,7 @@ export default async function CommoditiesPage() {
       price: wti.price,
       change: wti.change,
       positive: wti.positive,
+      sparkline: wti.sparkline,
       href: "/markets/wti",
     },
     {
@@ -77,6 +83,7 @@ export default async function CommoditiesPage() {
       price: naturalGas.price,
       change: naturalGas.change,
       positive: naturalGas.positive,
+      sparkline: naturalGas.sparkline,
       href: "/markets/naturalgas",
     },
     {
@@ -84,6 +91,7 @@ export default async function CommoditiesPage() {
       price: copper.price,
       change: copper.change,
       positive: copper.positive,
+      sparkline: copper.sparkline,
       href: "/markets/copper",
     },
   ];
@@ -100,6 +108,7 @@ export default async function CommoditiesPage() {
             price={market.price}
             change={market.change}
             positive={market.positive}
+            sparkline={market.sparkline}
             href={market.href}
           />
         ))}

@@ -304,7 +304,7 @@ h2 {
 
 @media (max-width: 560px) {
   body {
-    padding: 16px;
+    padding: 16px 2px;
   }
 
   h1 {
@@ -312,8 +312,8 @@ h2 {
   }
 
   .grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 6px;
   }
 
   .featured {
@@ -321,7 +321,13 @@ h2 {
   }
 
   .card {
-    height: 270px;
+    height: 240px;
+    padding: 14px;
+  }
+
+  .card-chart {
+    height: 85px;
+    margin: 8px -14px 0;
   }
 }
 

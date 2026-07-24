@@ -113,6 +113,7 @@ export default async function CommoditiesPage() {
           />
         ))}
       </div>
+      <Navbar bottom />
     </main>
   );
 }

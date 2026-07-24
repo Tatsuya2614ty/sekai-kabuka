@@ -112,6 +112,7 @@ export default async function GlobalPage() {
                     />
                 ))}
             </div>
+            <Navbar bottom />
         </main>
     );
 }

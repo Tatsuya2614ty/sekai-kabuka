@@ -338,3 +338,34 @@ h2 {
   overflow: hidden;
   pointer-events: none;
 }
+
+.navbar {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 20px;
+  padding: 8px 0;
+}
+
+.navbar a:nth-child(1),
+.navbar a:nth-child(2) {
+  grid-column: span 3;
+}
+
+.navbar a:nth-child(n + 3) {
+  grid-column: span 2;
+}
+
+.navbar button {
+  width: 100%;
+  padding: 8px 6px;
+  font-size: 14px;
+}
+
+.navbar-bottom {
+  position: static;
+  margin-top: 20px;
+  margin-bottom: 0;
+  transform: none;
+  opacity: 1;
+}

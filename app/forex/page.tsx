@@ -106,6 +106,7 @@ export default async function ForexPage() {
           );
         })}
       </div>
+      <Navbar bottom />
     </main>
   );
 }

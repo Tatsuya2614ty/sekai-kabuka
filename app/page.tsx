@@ -125,6 +125,8 @@ export default async function Home() {
           />
         ))}
       </div>
+
+      <Navbar bottom />
     </main>
   );
 }

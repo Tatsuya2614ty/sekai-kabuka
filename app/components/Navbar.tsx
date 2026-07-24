@@ -1,16 +1,20 @@
 "use client";
 
+type NavbarProps = { bottom?: boolean; };
+
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Navbar() {
+export default function Navbar({ bottom = false }: NavbarProps) {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
 
   // Show or hide the navbar based on the scroll direction.
   useEffect(() => {
+    if (bottom) return;
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
@@ -31,10 +35,16 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [bottom]);
+
+  const navbarClassName = bottom
+    ? "navbar navbar-bottom"
+    : isVisible
+      ? "navbar"
+      : "navbar hidden";
 
   return (
-    <div className={isVisible ? "navbar" : "navbar hidden"}>
+    <div className={navbarClassName}>
       <Link href="/">
         <button className={pathname === "/" ? "active" : ""}>
           US Stocks

@@ -48,6 +48,7 @@ export default async function CryptoPage() {
         ))}
 
       </div>
+      <Navbar bottom />
     </main>
   );
 }

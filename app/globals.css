@@ -125,11 +125,9 @@ h2 {
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 18px;
   background:
-    linear-gradient(
-      145deg,
+    linear-gradient(145deg,
       rgba(255, 255, 255, 0.045),
-      rgba(255, 255, 255, 0.01)
-    ),
+      rgba(255, 255, 255, 0.01)),
     #191919;
 
   box-shadow:
@@ -149,11 +147,9 @@ h2 {
   transform: translateY(-6px);
   border-color: rgba(255, 255, 255, 0.2);
   background:
-    linear-gradient(
-      145deg,
+    linear-gradient(145deg,
       rgba(255, 255, 255, 0.065),
-      rgba(255, 255, 255, 0.015)
-    ),
+      rgba(255, 255, 255, 0.015)),
     #1c1c1c;
 
   box-shadow:
@@ -250,33 +246,27 @@ h2 {
   grid-column: span 3;
   border-color: rgba(96, 165, 250, 0.22);
   background:
-    linear-gradient(
-      145deg,
+    linear-gradient(145deg,
       rgba(96, 165, 250, 0.08),
-      rgba(255, 255, 255, 0.01)
-    ),
+      rgba(255, 255, 255, 0.01)),
     #181c24;
 }
 
 .fear {
   border-color: rgba(242, 54, 69, 0.22);
   background:
-    linear-gradient(
-      145deg,
+    linear-gradient(145deg,
       rgba(242, 54, 69, 0.07),
-      rgba(255, 255, 255, 0.01)
-    ),
+      rgba(255, 255, 255, 0.01)),
     #21191a;
 }
 
 .crypto-featured {
   border-color: rgba(245, 158, 11, 0.22);
   background:
-    linear-gradient(
-      145deg,
+    linear-gradient(145deg,
       rgba(245, 158, 11, 0.07),
-      rgba(255, 255, 255, 0.01)
-    ),
+      rgba(255, 255, 255, 0.01)),
     #211d17;
 }
 
@@ -312,7 +302,7 @@ h2 {
   }
 
   .grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
   }
 
@@ -339,28 +329,67 @@ h2 {
   pointer-events: none;
 }
 
-.navbar {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 6px;
-  margin-bottom: 20px;
-  padding: 8px 0;
+@media (max-width: 560px) {
+  body {
+    padding: 16px 2px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .featured {
+    grid-column: span 1;
+  }
+
+  .card {
+    height: 240px;
+    padding: 14px;
+  }
+
+  .card-chart {
+    height: 85px;
+    margin: 8px -14px 0;
+  }
+
+  .navbar {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px;
+    margin-bottom: 20px;
+    padding: 8px 0;
+  }
+
+  .navbar a:nth-child(1),
+  .navbar a:nth-child(2) {
+    grid-column: span 3;
+  }
+
+  .navbar a:nth-child(n + 3) {
+    grid-column: span 2;
+  }
+
+  .navbar button {
+    width: 100%;
+    padding: 8px 6px;
+    font-size: 14px;
+  }
 }
 
-.navbar a:nth-child(1),
-.navbar a:nth-child(2) {
-  grid-column: span 3;
-}
-
-.navbar a:nth-child(n + 3) {
-  grid-column: span 2;
-}
-
-.navbar button {
+.sparkline-wrapper {
   width: 100%;
-  padding: 8px 6px;
-  font-size: 14px;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
+
+
 
 .navbar-bottom {
   position: static;

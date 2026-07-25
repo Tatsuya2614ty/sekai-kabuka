@@ -22,8 +22,8 @@ html {
 
 body {
   min-height: 100vh;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   padding: 40px;
   background: #111111;
   color: var(--foreground);

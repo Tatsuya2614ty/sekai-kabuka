@@ -35,6 +35,12 @@ export default function MarketCard({
     .filter(Boolean)
     .join(" ");
 
+  const [textIcon, ...titleWords] = title.split(" ");
+  const hasTextIcon = !logo && titleWords.length > 0;
+
+  const displayedTitle = hasTextIcon
+    ? titleWords.join(" ")
+    : title;
   const cardContent = (
     <div className={cardClassName}>
       <div className="card-header">
@@ -51,7 +57,13 @@ export default function MarketCard({
         <div className="card-title-row">
           {name && <span className="card-name">{name}</span>}
 
-          <span className="card-symbol">{title}</span>
+          <span className="card-symbol">
+            {hasTextIcon && (
+              <span className="card-text-icon">{textIcon}</span>
+            )}
+
+            {displayedTitle}
+          </span>
         </div>
       </div>
 
@@ -59,9 +71,8 @@ export default function MarketCard({
         <p className="price">{price}</p>
 
         <span
-          className={`card-change ${
-            positive ? "positive" : "negative"
-          }`}
+          className={`card-change ${positive ? "positive" : "negative"
+            }`}
         >
           {change}
         </span>

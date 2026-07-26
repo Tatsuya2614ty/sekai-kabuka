@@ -204,7 +204,7 @@ h2 {
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.08);
   color: #b8b8b8;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.03em;
 }
@@ -375,4 +375,17 @@ h2 {
   margin-bottom: 0;
   transform: none;
   opacity: 1;
+}
+
+.card-symbol {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-text-icon {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+  transform: scale(1.5);
 }

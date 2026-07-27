@@ -40,16 +40,27 @@ a {
 .navbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  gap: 4px;
   margin-bottom: 40px;
+  padding: 5px;
 
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 12px 0;
-  background: #111111;
 
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: #181818;
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
 }
 
 .navbar.hidden {
@@ -337,6 +348,7 @@ h2 {
 
   .navbar {
     display: grid;
+    width: 100%;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 6px;
     margin-bottom: 20px;

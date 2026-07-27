@@ -55,15 +55,20 @@ export default function MarketCard({
         )}
 
         <div className="card-title-row">
-          {name && <span className="card-name">{name}</span>}
+          {/* show the icon if it exists */}
+          {hasTextIcon && (
+            <span className="card-text-icon">{textIcon}</span>
+          )}
 
-          <span className="card-symbol">
-            {hasTextIcon && (
-              <span className="card-text-icon">{textIcon}</span>
-            )}
-
-            {displayedTitle}
+          {/* always show the best available name */}
+          <span className="card-name">
+            {name || displayedTitle}
           </span>
+
+          {/* show the symbol if both values exist */}
+          {name && title && (
+            <span className="card-symbol">{title}</span>
+          )}
         </div>
       </div>
 

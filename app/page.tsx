@@ -43,67 +43,184 @@ async function getYahooIndex(symbol: string): Promise<YahooIndexData> {
 }
 
 export default async function Home() {
-  const [sp500, nasdaq, dow, russell, vix, us10y] = await Promise.all([
+  const [sp500, nasdaq, dow, russell, vix, us10y, sox, nasdaq100, sp100, spMidCap400, spSmallCap600, nyseComposite,
+    dowTransportation, technology, financials, healthcare, energy, industrials,
+    consumerDiscretionary, consumerStaples, utilities, materials, realEstate, communicationServices,
+    totalMarket, equalWeight, magnificentSeven, regionalBanks, biotechnology, innovation,
+  ] = await Promise.all([
+
     getYahooIndex("%5EGSPC"),
     getYahooIndex("%5EIXIC"),
     getYahooIndex("%5EDJI"),
     getYahooIndex("%5ERUT"),
     getYahooIndex("%5EVIX"),
     getYahooIndex("%5ETNX"),
+    getYahooIndex("%5ESOX"),
+    getYahooIndex("%5ENDX"),
+    getYahooIndex("%5ESP100"),
+    getYahooIndex("%5ESP400"),
+    getYahooIndex("%5ESP600"),
+    getYahooIndex("%5ENYA"),
+    getYahooIndex("%5EDJT"),
+    getYahooIndex("XLK"),
+    getYahooIndex("XLF"),
+    getYahooIndex("XLV"),
+    getYahooIndex("XLE"),
+    getYahooIndex("XLI"),
+    getYahooIndex("XLY"),
+    getYahooIndex("XLP"),
+    getYahooIndex("XLU"),
+    getYahooIndex("XLB"),
+    getYahooIndex("XLRE"),
+    getYahooIndex("XLC"),
+    getYahooIndex("VTI"),
+    getYahooIndex("RSP"),
+    getYahooIndex("MAGS"),
+    getYahooIndex("KRE"),
+    getYahooIndex("XBI"),
+    getYahooIndex("ARKK"),
   ]);
 
-  const markets: USMarket[] = [
+  function createMarket(
+    title: string,
+    data: {
+      price: string;
+      change: string;
+      positive: boolean;
+      sparkline: number[];
+    },
+    options: Partial<USMarket> = {}
+  ): USMarket {
+    return {
+      title,
+      price: data.price,
+      change: data.change,
+      positive: data.positive,
+      sparkline: data.sparkline,
+      ...options,
+    };
+  }
 
-    {
-      title: "🇺🇸 S&P 500",
-      price: sp500.price,
-      change: sp500.change,
-      positive: sp500.positive,
-      sparkline: sp500.sparkline,
+  const markets: USMarket[] = [
+    createMarket("🇺🇸 S&P 500", sp500, {
       featured: true,
       href: "/markets/sp500",
-    },
-    {
-      title: "🇺🇸 Nasdaq",
-      price: nasdaq.price,
-      change: nasdaq.change,
-      positive: nasdaq.positive,
-      sparkline: nasdaq.sparkline,
+    }),
+
+    createMarket("🇺🇸 Nasdaq", nasdaq, {
       href: "/markets/nasdaq",
-    },
-    {
-      title: "🇺🇸 Dow Jones",
-      price: dow.price,
-      change: dow.change,
-      positive: dow.positive,
-      sparkline: dow.sparkline,
+    }),
+
+    createMarket("🇺🇸 Dow Jones", dow, {
       href: "/markets/dow",
-    },
-    {
-      title: "🇺🇸 Russell 2000",
-      price: russell.price,
-      change: russell.change,
-      positive: russell.positive,
-      sparkline: russell.sparkline,
+    }),
+
+    createMarket("🇺🇸 Russell 2000", russell, {
       href: "/markets/russell",
-    },
-    {
-      title: "🇺🇸 VIX",
-      price: vix.price,
-      change: vix.change,
-      positive: vix.positive,
-      sparkline: vix.sparkline,
+    }),
+
+    createMarket("🇺🇸 VIX", vix, {
       customClass: "fear",
       href: "/markets/vix",
-    },
-    {
-      title: "🇺🇸 US 10Y",
-      price: us10y.price,
-      change: us10y.change,
-      positive: us10y.positive,
-      sparkline: us10y.sparkline,
+    }),
+
+    createMarket("🇺🇸 US 10Y", us10y, {
       href: "/markets/us10y",
-    },
+    }),
+
+    createMarket("🇺🇸 SOX", sox, {
+      href: "/markets/sox",
+    }),
+    createMarket("🇺🇸 Nasdaq 100", nasdaq100, {
+      href: "/markets/nasdaq100",
+    }),
+
+    createMarket("🇺🇸 S&P 100", sp100, {
+      href: "/markets/sp100",
+    }),
+
+    createMarket("🇺🇸 S&P MidCap 400", spMidCap400, {
+      href: "/markets/spmidcap400",
+    }),
+
+    createMarket("🇺🇸 S&P SmallCap 600", spSmallCap600, {
+      href: "/markets/spsmallcap600",
+    }),
+
+    createMarket("🇺🇸 NYSE Composite", nyseComposite, {
+      href: "/markets/nysecomposite",
+    }),
+
+    createMarket("🇺🇸 Dow Transportation", dowTransportation, {
+      href: "/markets/dowtransportation",
+    }),
+
+    createMarket("🇺🇸 Technology (XLK)", technology, {
+      href: "/markets/technology",
+    }),
+
+    createMarket("🇺🇸 Financials (XLF)", financials, {
+      href: "/markets/financials",
+    }),
+
+    createMarket("🇺🇸 Healthcare (XLV)", healthcare, {
+      href: "/markets/healthcare",
+    }),
+
+    createMarket("🇺🇸 Energy (XLE)", energy, {
+      href: "/markets/energy",
+    }),
+
+    createMarket("🇺🇸 Industrials (XLI)", industrials, {
+      href: "/markets/industrials",
+    }),
+
+    createMarket("🇺🇸 Consumer Discretionary (XLY)", consumerDiscretionary, {
+      href: "/markets/consumerdiscretionary",
+    }),
+
+    createMarket("🇺🇸 Consumer Staples (XLP)", consumerStaples, {
+      href: "/markets/consumerstaples",
+    }),
+
+    createMarket("🇺🇸 Utilities (XLU)", utilities, {
+      href: "/markets/utilities",
+    }),
+
+    createMarket("🇺🇸 Materials (XLB)", materials, {
+      href: "/markets/materials",
+    }),
+
+    createMarket("🇺🇸 Real Estate (XLRE)", realEstate, {
+      href: "/markets/realestate",
+    }),
+
+    createMarket("🇺🇸 Communication Services (XLC)", communicationServices, {
+      href: "/markets/communicationservices",
+    }),
+    createMarket("🇺🇸 US Total Market (VTI)", totalMarket, {
+      href: "/markets/totalmarket",
+    }),
+
+    createMarket("🇺🇸 S&P 500 Equal Weight (RSP)", equalWeight, {
+      href: "/markets/equalweight",
+    }),
+
+    createMarket("🇺🇸 Magnificent Seven (MAGS)", magnificentSeven, {
+      href: "/markets/magnificentseven",
+    }),
+
+    createMarket("🇺🇸 Regional Banks (KRE)", regionalBanks, {
+      href: "/markets/regionalbanks",
+    }),
+
+    createMarket("🇺🇸 Biotechnology (XBI)", biotechnology, {
+      href: "/markets/biotechnology",
+    }),
+
+    createMarket("🇺🇸 Innovation (ARKK)", innovation, {
+      href: "/markets/innovation",
+    }),
   ];
   return (
     <main>

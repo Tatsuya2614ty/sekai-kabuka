@@ -12,6 +12,10 @@ const marketConfig = {
         title: "Nasdaq 100 (QQQ)",
         tradingViewSymbol: "NASDAQ:QQQ",
     },
+    sox: {
+        title: "PHLX Semiconductor Index (SOXQ)",
+        tradingViewSymbol: "NASDAQ:SOXQ",
+    },
     dow: {
         title: "Dow Jones (DIA)",
         tradingViewSymbol: "AMEX:DIA",
@@ -28,7 +32,117 @@ const marketConfig = {
         title: "US 10Y Treasury Yield",
         tradingViewSymbol: "TVC:US10Y",
     },
+    nasdaq100: {
+        title: "Nasdaq 100 ETF (QQQ)",
+        tradingViewSymbol: "NASDAQ:QQQ",
+    },
+    sp100: {
+        title: "S&P 100 ETF (OEF)",
+        tradingViewSymbol: "AMEX:OEF",
+    },
 
+    spmidcap400: {
+        title: "S&P MidCap 400",
+        tradingViewSymbol: "SP:MID",
+    },
+
+    spsmallcap600: {
+        title: "S&P SmallCap 600 ETF (IJR)",
+        tradingViewSymbol: "AMEX:IJR",
+    },
+
+    nysecomposite: {
+        title: "US Total Market ETF (VTI)",
+        tradingViewSymbol: "AMEX:VTI",
+    },
+    dowtransportation: {
+        title: "Transportation ETF (IYT)",
+        tradingViewSymbol: "AMEX:IYT",
+    },
+
+    technology: {
+        title: "Technology Select Sector SPDR Fund (XLK)",
+        tradingViewSymbol: "AMEX:XLK",
+    },
+
+    financials: {
+        title: "Financial Select Sector SPDR Fund (XLF)",
+        tradingViewSymbol: "AMEX:XLF",
+    },
+
+    healthcare: {
+        title: "Health Care Select Sector SPDR Fund (XLV)",
+        tradingViewSymbol: "AMEX:XLV",
+    },
+
+    energy: {
+        title: "Energy Select Sector SPDR Fund (XLE)",
+        tradingViewSymbol: "AMEX:XLE",
+    },
+
+    industrials: {
+        title: "Industrial Select Sector SPDR Fund (XLI)",
+        tradingViewSymbol: "AMEX:XLI",
+    },
+
+    consumerdiscretionary: {
+        title: "Consumer Discretionary Select Sector SPDR Fund (XLY)",
+        tradingViewSymbol: "AMEX:XLY",
+    },
+
+    consumerstaples: {
+        title: "Consumer Staples Select Sector SPDR Fund (XLP)",
+        tradingViewSymbol: "AMEX:XLP",
+    },
+
+    utilities: {
+        title: "Utilities Select Sector SPDR Fund (XLU)",
+        tradingViewSymbol: "AMEX:XLU",
+    },
+
+    materials: {
+        title: "Materials Select Sector SPDR Fund (XLB)",
+        tradingViewSymbol: "AMEX:XLB",
+    },
+
+    realestate: {
+        title: "Real Estate Select Sector SPDR Fund (XLRE)",
+        tradingViewSymbol: "AMEX:XLRE",
+    },
+
+    communicationservices: {
+        title: "Communication Services Select Sector SPDR Fund (XLC)",
+        tradingViewSymbol: "AMEX:XLC",
+    },
+    totalmarket: {
+        title: "Vanguard Total Stock Market ETF (VTI)",
+        tradingViewSymbol: "AMEX:VTI",
+    },
+
+    equalweight: {
+        title: "Invesco S&P 500 Equal Weight ETF (RSP)",
+        tradingViewSymbol: "AMEX:RSP",
+    },
+
+    magnificentseven: {
+        title: "Roundhill Magnificent Seven ETF (MAGS)",
+        tradingViewSymbol: "CBOE:MAGS",
+    },
+
+    regionalbanks: {
+        title: "SPDR S&P Regional Banking ETF (KRE)",
+        tradingViewSymbol: "AMEX:KRE",
+    },
+
+    biotechnology: {
+        title: "SPDR S&P Biotechnology ETF (XBI)",
+        tradingViewSymbol: "AMEX:XBI",
+    },
+
+    innovation: {
+        title: "ARK Innovation ETF (ARKK)",
+        tradingViewSymbol: "AMEX:ARKK",
+    },
     bitcoin: {
         title: "Bitcoin",
         tradingViewSymbol: "BINANCE:BTCUSDT",

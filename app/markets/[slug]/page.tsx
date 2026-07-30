@@ -319,6 +319,110 @@ const marketConfig = {
         title: "USD/CAD",
         tradingViewSymbol: "FX:USDCAD",
     },
+    audusd: {
+        title: "AUD/USD",
+        tradingViewSymbol: "FX:AUDUSD",
+    },
+    nzdusd: {
+        title: "NZD/USD",
+        tradingViewSymbol: "FX:NZDUSD",
+    },
+    usdchf: {
+        title: "USD/CHF",
+        tradingViewSymbol: "FX:USDCHF",
+    },
+    eurjpy: {
+        title: "EUR/JPY",
+        tradingViewSymbol: "FX:EURJPY",
+    },
+    gbpjpy: {
+        title: "GBP/JPY",
+        tradingViewSymbol: "FX:GBPJPY",
+    },
+    audjpy: {
+        title: "AUD/JPY",
+        tradingViewSymbol: "FX:AUDJPY",
+    },
+    eurgbp: {
+        title: "EUR/GBP",
+        tradingViewSymbol: "FX:EURGBP",
+    },
+    eurchf: {
+        title: "EUR/CHF",
+        tradingViewSymbol: "FX:EURCHF",
+    },
+    euraud: {
+        title: "EUR/AUD",
+        tradingViewSymbol: "FX:EURAUD",
+    },
+    eurnzd: {
+        title: "EUR/NZD",
+        tradingViewSymbol: "FX:EURNZD",
+    },
+    gbpaud: {
+        title: "GBP/AUD",
+        tradingViewSymbol: "FX:GBPAUD",
+    },
+    gbpnzd: {
+        title: "GBP/NZD",
+        tradingViewSymbol: "FX:GBPNZD",
+    },
+    gbpchf: {
+        title: "GBP/CHF",
+        tradingViewSymbol: "FX:GBPCHF",
+    },
+    audnzd: {
+        title: "AUD/NZD",
+        tradingViewSymbol: "FX:AUDNZD",
+    },
+    audcad: {
+        title: "AUD/CAD",
+        tradingViewSymbol: "FX:AUDCAD",
+    },
+    audchf: {
+        title: "AUD/CHF",
+        tradingViewSymbol: "FX:AUDCHF",
+    },
+    nzdjpy: {
+        title: "NZD/JPY",
+        tradingViewSymbol: "FX:NZDJPY",
+    },
+    nzdcad: {
+        title: "NZD/CAD",
+        tradingViewSymbol: "FX:NZDCAD",
+    },
+    nzdchf: {
+        title: "NZD/CHF",
+        tradingViewSymbol: "FX:NZDCHF",
+    },
+    cadjpy: {
+        title: "CAD/JPY",
+        tradingViewSymbol: "FX:CADJPY",
+    },
+    cadchf: {
+        title: "CAD/CHF",
+        tradingViewSymbol: "FX:CADCHF",
+    },
+    chfjpy: {
+        title: "CHF/JPY",
+        tradingViewSymbol: "FX:CHFJPY",
+    },
+    eurcad: {
+        title: "EUR/CAD",
+        tradingViewSymbol: "FX:EURCAD",
+    },
+    gbpcad: {
+        title: "GBP/CAD",
+        tradingViewSymbol: "FX:GBPCAD",
+    },
+    usdcny: {
+        title: "USD/CNY",
+        tradingViewSymbol: "FX_IDC:USDCNY",
+    },
+    usdhkd: {
+        title: "USD/HKD",
+        tradingViewSymbol: "FX:USDHKD",
+    },
 };
 
 type MarketPageProps = {

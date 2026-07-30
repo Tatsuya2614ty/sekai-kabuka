@@ -127,8 +127,11 @@ Example:
 
 ### `[]` — Square Brackets / Array（角括弧・配列）
 
-Stores multiple values in a list.  
-複数の値をリストとして保存します。
+役割: 複数のデータを順番に並べてまとめておきたい時に使います。
+
+イメージ: スーパーの「お買い物リスト」のようなものです。
+
+例: 市場の一覧、価格の一覧など
 
 Example（例）:
 - A list of markets（市場の一覧）
@@ -137,8 +140,11 @@ Example（例）:
 
 ### `{}` — Curly Braces / Object（波括弧・オブジェクト）
 
-Stores related information using properties.  
-関連する情報をプロパティとしてまとめて保存します。
+役割: 1つのものに関する詳しい情報（プロパティ）をセットでまとめたい時に使います。
+
+イメージ: 人のプロフィール（名前、年齢、住所など）のセットのようなものです。
+
+例: ある市場の名前、価格、前日比などの詳細情報
 
 Example（例）:
 - A market’s title（市場の名前）
@@ -147,8 +153,11 @@ Example（例）:
 
 ### `<>` — Angle Brackets / JSX（山括弧・JSX）
 
-Creates or groups React elements.  
-Reactの要素を作成したり、複数の要素をまとめたりします。
+役割: Webサイトの見た目を作るパーツ（Reactのコンポーネント）を表示したり、まとめたりする時に使います。
+
+イメージ: ブロックを組み立てて画面を作るようなものです。
+
+例: ナビゲーションバーやカードなどの画面部品、複数の部品を包むタグ
 
 Example（例）:
 - A `<Navbar />` component（Navbarコンポーネント）
@@ -157,8 +166,11 @@ Example（例）:
 
 ### `()` — Parentheses（丸括弧）
 
-Calls functions or groups code.  
-関数を呼び出したり、コードをまとめたりします。
+役割: 命令（関数）を実行させたり、処理の条件を指定したり、計算の優先順位をまとめる時に使います。
+
+イメージ: 「〜を実行して！」と指示を出したり、ひとまとまりの範囲をハッキリさせる括弧です。
+
+例: 関数を呼び出す、if文の条件を書く
 
 Example（例）:
 - Calling `getYahooMarket()`（関数を呼び出す）

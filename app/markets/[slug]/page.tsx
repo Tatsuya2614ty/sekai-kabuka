@@ -183,6 +183,106 @@ const marketConfig = {
         title: "Euro Stoxx 50",
         tradingViewSymbol: "CAPITALCOM:EU50",
     },
+    shanghai: {
+        title: "Shanghai Composite",
+        tradingViewSymbol: "SSE:000001",
+    },
+    shenzhen: {
+        title: "Shenzhen Component",
+        tradingViewSymbol: "SZSE:399001",
+    },
+    kospi: {
+        title: "KOSPI — EWY ETF Proxy",
+        tradingViewSymbol: "AMEX:EWY",
+    },
+    taiwan: {
+        title: "Taiwan Weighted — EWT ETF Proxy",
+        tradingViewSymbol: "AMEX:EWT",
+    },
+    nifty50: {
+        title: "Nifty 50 — INDY ETF Proxy",
+        tradingViewSymbol: "NASDAQ:INDY",
+    },
+    sensex: {
+        title: "BSE Sensex — INDA ETF Proxy",
+        tradingViewSymbol: "AMEX:INDA",
+    },
+    asx200: {
+        title: "ASX 200 — EWA ETF Proxy",
+        tradingViewSymbol: "AMEX:EWA",
+    },
+    singapore: {
+        title: "Singapore STI — EWS ETF Proxy",
+        tradingViewSymbol: "AMEX:EWS",
+    },
+    indonesia: {
+        title: "Jakarta Composite — EIDO ETF Proxy",
+        tradingViewSymbol: "AMEX:EIDO",
+    },
+    malaysia: {
+        title: "Malaysia KLCI — EWM ETF Proxy",
+        tradingViewSymbol: "AMEX:EWM",
+    },
+    canada: {
+        title: "S&P/TSX Composite — EWC ETF Proxy",
+        tradingViewSymbol: "AMEX:EWC",
+    },
+    brazil: {
+        title: "Bovespa — EWZ ETF Proxy",
+        tradingViewSymbol: "AMEX:EWZ",
+    },
+    mexico: {
+        title: "IPC Mexico — EWW ETF Proxy",
+        tradingViewSymbol: "AMEX:EWW",
+    },
+    france: {
+        title: "CAC 40 — EWQ ETF Proxy",
+        tradingViewSymbol: "AMEX:EWQ",
+    },
+    italy: {
+        title: "FTSE MIB — EWI ETF Proxy",
+        tradingViewSymbol: "AMEX:EWI",
+    },
+    spain: {
+        title: "IBEX 35 — EWP ETF Proxy",
+        tradingViewSymbol: "AMEX:EWP",
+    },
+    switzerland: {
+        title: "Swiss Market Index — EWL ETF Proxy",
+        tradingViewSymbol: "AMEX:EWL",
+    },
+    netherlands: {
+        title: "AEX — EWN ETF Proxy",
+        tradingViewSymbol: "AMEX:EWN",
+    },
+    sweden: {
+        title: "OMX Stockholm 30 — EWD ETF Proxy",
+        tradingViewSymbol: "AMEX:EWD",
+    },
+    belgium: {
+        title: "BEL 20 — EWK ETF Proxy",
+        tradingViewSymbol: "AMEX:EWK",
+    },
+    newzealand: {
+        title: "New Zealand — ENZL ETF",
+        tradingViewSymbol: "NASDAQ:ENZL",
+    },
+    southafrica: {
+        title: "South Africa — EZA ETF",
+        tradingViewSymbol: "AMEX:EZA",
+    },
+    thailand: {
+        title: "Thailand — THD ETF",
+        tradingViewSymbol: "AMEX:THD",
+    },
+    philippines: {
+        title: "Philippines — EPHE ETF",
+        tradingViewSymbol: "AMEX:EPHE",
+    },
+    vietnam: {
+        title: "Vietnam — VNM ETF",
+        tradingViewSymbol: "AMEX:VNM",
+    },
     gold: {
         title: "Gold",
         tradingViewSymbol: "OANDA:XAUUSD",

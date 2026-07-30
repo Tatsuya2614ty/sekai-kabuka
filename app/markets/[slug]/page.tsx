@@ -403,6 +403,106 @@ const marketConfig = {
         title: "Copper",
         tradingViewSymbol: "CAPITALCOM:COPPER",
     },
+    platinum: {
+        title: "Platinum — PPLT ETF Proxy",
+        tradingViewSymbol: "AMEX:PPLT",
+    },
+    palladium: {
+        title: "Palladium — PALL ETF Proxy",
+        tradingViewSymbol: "AMEX:PALL",
+    },
+    brent: {
+        title: "Brent Oil — BNO ETF Proxy",
+        tradingViewSymbol: "AMEX:BNO",
+    },
+    heatingoil: {
+        title: "Heating Oil",
+        tradingViewSymbol: "CAPITALCOM:HEATINGOIL",
+    },
+    gasoline: {
+        title: "Gasoline — UGA ETF Proxy",
+        tradingViewSymbol: "AMEX:UGA",
+    },
+    corn: {
+        title: "Corn — CORN ETF",
+        tradingViewSymbol: "AMEX:CORN",
+    },
+    wheat: {
+        title: "Chicago Wheat — WEAT ETF",
+        tradingViewSymbol: "AMEX:WEAT",
+    },
+    soybeans: {
+  title: "Soybeans",
+  tradingViewSymbol: "CMCMARKETS:SOYBEAN",
+},
+    soybeanmeal: {
+        title: "Soybean Meal",
+        tradingViewSymbol: "CMCMARKETS:SOYMEAL",
+    },
+    soybeanoil: {
+        title: "Soybean Oil",
+        tradingViewSymbol: "CMCMARKETS:SOYOIL",
+    },
+    oats: {
+        title: "Oats",
+        tradingViewSymbol: "CMCMARKETS:OATS",
+    },
+    roughrice: {
+        title: "Rough Rice",
+        tradingViewSymbol: "CMCMARKETS:ROUGHRICE",
+    },
+    kcwheat: {
+        title: "KC Wheat — WEAT ETF Proxy",
+        tradingViewSymbol: "AMEX:WEAT",
+    },
+    livecattle: {
+        title: "Live Cattle",
+        tradingViewSymbol: "CITYINDEX:LIVECATTLECFD",
+    },
+    leanhogs: {
+        title: "Lean Hogs",
+        tradingViewSymbol: "CITYINDEX:LEANHOGSCFD",
+    },
+    feedercattle: {
+        title: "Feeder Cattle — Aug 2026",
+        tradingViewSymbol: "CMCMARKETS:FEEDERCATTLEQ2026",
+    },
+    coffee: {
+        title: "Coffee",
+        tradingViewSymbol: "CAPITALCOM:COFFEE",
+    },
+    cocoa: {
+        title: "Cocoa",
+        tradingViewSymbol: "CAPITALCOM:COCOA",
+    },
+    sugar: {
+        title: "Sugar — CANE ETF",
+        tradingViewSymbol: "AMEX:CANE",
+    },
+    cotton: {
+        title: "Cotton",
+        tradingViewSymbol: "CAPITALCOM:COTTON",
+    },
+    orangejuice: {
+        title: "Orange Juice",
+        tradingViewSymbol: "CMCMARKETS:ORANGEJUICE",
+    },
+    lumber: {
+  title: "Lumber",
+  tradingViewSymbol: "CMCMARKETS:USLUMBER",
+},
+    dba: {
+        title: "DBA Agriculture ETF",
+        tradingViewSymbol: "AMEX:DBA",
+    },
+    dbc: {
+        title: "DBC Commodity ETF",
+        tradingViewSymbol: "AMEX:DBC",
+    },
+    ura: {
+        title: "URA Uranium ETF",
+        tradingViewSymbol: "AMEX:URA",
+    },
     usdjpy: {
         title: "USD/JPY",
         tradingViewSymbol: "FX:USDJPY",

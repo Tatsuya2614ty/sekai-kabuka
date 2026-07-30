@@ -163,6 +163,106 @@ const marketConfig = {
         title: "BNB",
         tradingViewSymbol: "BINANCE:BNBUSDT",
     },
+    cardano: {
+        title: "Cardano",
+        tradingViewSymbol: "BINANCE:ADAUSDT",
+    },
+    dogecoin: {
+        title: "Dogecoin",
+        tradingViewSymbol: "BINANCE:DOGEUSDT",
+    },
+    tron: {
+        title: "TRON",
+        tradingViewSymbol: "BINANCE:TRXUSDT",
+    },
+    chainlink: {
+        title: "Chainlink",
+        tradingViewSymbol: "BINANCE:LINKUSDT",
+    },
+    "avalanche-2": {
+        title: "Avalanche",
+        tradingViewSymbol: "BINANCE:AVAXUSDT",
+    },
+    stellar: {
+        title: "Stellar",
+        tradingViewSymbol: "BINANCE:XLMUSDT",
+    },
+    sui: {
+        title: "Sui",
+        tradingViewSymbol: "BINANCE:SUIUSDT",
+    },
+    "hedera-hashgraph": {
+        title: "Hedera",
+        tradingViewSymbol: "BINANCE:HBARUSDT",
+    },
+    litecoin: {
+        title: "Litecoin",
+        tradingViewSymbol: "BINANCE:LTCUSDT",
+    },
+    "shiba-inu": {
+        title: "Shiba Inu",
+        tradingViewSymbol: "BINANCE:SHIBUSDT",
+    },
+    polkadot: {
+        title: "Polkadot",
+        tradingViewSymbol: "BINANCE:DOTUSDT",
+    },
+    "bitcoin-cash": {
+        title: "Bitcoin Cash",
+        tradingViewSymbol: "BINANCE:BCHUSDT",
+    },
+    uniswap: {
+        title: "Uniswap",
+        tradingViewSymbol: "BINANCE:UNIUSDT",
+    },
+    pepe: {
+        title: "Pepe",
+        tradingViewSymbol: "BINANCE:PEPEUSDT",
+    },
+    near: {
+        title: "NEAR Protocol",
+        tradingViewSymbol: "BINANCE:NEARUSDT",
+    },
+    aave: {
+        title: "Aave",
+        tradingViewSymbol: "BINANCE:AAVEUSDT",
+    },
+    aptos: {
+        title: "Aptos",
+        tradingViewSymbol: "BINANCE:APTUSDT",
+    },
+    "internet-computer": {
+        title: "Internet Computer",
+        tradingViewSymbol: "BINANCE:ICPUSDT",
+    },
+    "crypto-com-chain": {
+        title: "Cronos",
+        tradingViewSymbol: "COINBASE:CROUSD",
+    },
+    bittensor: {
+        title: "Bittensor",
+        tradingViewSymbol: "BINANCE:TAOUSDT",
+    },
+    arbitrum: {
+        title: "Arbitrum",
+        tradingViewSymbol: "BINANCE:ARBUSDT",
+    },
+    "render-token": {
+        title: "Render",
+        tradingViewSymbol: "BINANCE:RENDERUSDT",
+    },
+    cosmos: {
+        title: "Cosmos Hub",
+        tradingViewSymbol: "BINANCE:ATOMUSDT",
+    },
+    filecoin: {
+        title: "Filecoin",
+        tradingViewSymbol: "BINANCE:FILUSDT",
+    },
+    optimism: {
+        title: "Optimism",
+        tradingViewSymbol: "BINANCE:OPUSDT",
+    },
     nikkei: {
         title: "Nikkei 225",
         tradingViewSymbol: "OSE:NK2251!",

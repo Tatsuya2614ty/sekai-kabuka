@@ -2,6 +2,7 @@
 
 import { use, useEffect, useRef } from "react";
 import Navbar from "../../components/Navbar";
+import YahooDetailChart from "../../components/YahooDetailChart";
 
 const marketConfig = {
     sp500: {
@@ -26,11 +27,11 @@ const marketConfig = {
     },
     vix: {
         title: "VIX",
-        tradingViewSymbol: "TVC:VIX",
+        yahooSymbol: "^VIX",
     },
     us10y: {
         title: "US 10Y Treasury Yield",
-        tradingViewSymbol: "TVC:US10Y",
+        yahooSymbol: "^TNX",
     },
     nasdaq100: {
         title: "Nasdaq 100 ETF (QQQ)",
@@ -432,9 +433,9 @@ const marketConfig = {
         tradingViewSymbol: "AMEX:WEAT",
     },
     soybeans: {
-  title: "Soybeans",
-  tradingViewSymbol: "CMCMARKETS:SOYBEAN",
-},
+        title: "Soybeans",
+        tradingViewSymbol: "CMCMARKETS:SOYBEAN",
+    },
     soybeanmeal: {
         title: "Soybean Meal",
         tradingViewSymbol: "CMCMARKETS:SOYMEAL",
@@ -452,8 +453,8 @@ const marketConfig = {
         tradingViewSymbol: "CMCMARKETS:ROUGHRICE",
     },
     kcwheat: {
-        title: "KC Wheat — WEAT ETF Proxy",
-        tradingViewSymbol: "AMEX:WEAT",
+        title: "KC Wheat",
+        yahooSymbol: "KE=F",
     },
     livecattle: {
         title: "Live Cattle",
@@ -488,9 +489,9 @@ const marketConfig = {
         tradingViewSymbol: "CMCMARKETS:ORANGEJUICE",
     },
     lumber: {
-  title: "Lumber",
-  tradingViewSymbol: "CMCMARKETS:USLUMBER",
-},
+        title: "Lumber",
+        tradingViewSymbol: "CMCMARKETS:USLUMBER",
+    },
     dba: {
         title: "DBA Agriculture ETF",
         tradingViewSymbol: "AMEX:DBA",
@@ -635,6 +636,15 @@ export default function MarketDetailPage({ params }: MarketPageProps) {
     const container = useRef<HTMLDivElement>(null);
     const { slug } = use(params);
     const market = marketConfig[slug as keyof typeof marketConfig];
+    const tradingViewSymbol =
+        market && "tradingViewSymbol" in market
+            ? market.tradingViewSymbol
+            : null;
+
+    const yahooSymbol =
+        market && "yahooSymbol" in market
+            ? market.yahooSymbol
+            : null;
 
     if (!market) {
         return (
@@ -647,7 +657,7 @@ export default function MarketDetailPage({ params }: MarketPageProps) {
     }
 
     useEffect(() => {
-        if (!container.current) return;
+        if (!container.current || !tradingViewSymbol) return;
 
         container.current.innerHTML = "";
 
@@ -659,7 +669,7 @@ export default function MarketDetailPage({ params }: MarketPageProps) {
 
         script.innerHTML = JSON.stringify({
             autosize: true,
-            symbol: market.tradingViewSymbol,
+            symbol: tradingViewSymbol,
             interval: "D",
             timezone: "Asia/Tokyo",
             theme: "dark",
@@ -674,17 +684,22 @@ export default function MarketDetailPage({ params }: MarketPageProps) {
         });
 
         container.current.appendChild(script);
-    }, [market.tradingViewSymbol]);
+    }, [tradingViewSymbol]);
 
     return (
         <main>
             <Navbar />
             <h1>{market.title}</h1>
 
-            <div
-                ref={container}
-                style={{ height: "600px", width: "100%", marginTop: "24px" }}
-            />
+            {yahooSymbol ? (
+                <YahooDetailChart symbol={yahooSymbol} />
+            ) : (
+                <div
+                    ref={container}
+                    style={{ height: "600px", width: "100%",  marginTop: "24px",
+                    }}
+                />
+            )}
         </main>
     );
 }

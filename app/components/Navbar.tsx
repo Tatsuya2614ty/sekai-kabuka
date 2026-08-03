@@ -74,6 +74,12 @@ export default function Navbar({ bottom = false }: NavbarProps) {
           Commodities
         </button>
       </Link>
+
+      <Link href="/bonds">
+        <button className={pathname === "/bonds" ? "active" : ""}>
+          Bonds
+        </button>
+      </Link>
     </div>
   );
 }

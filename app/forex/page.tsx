@@ -17,6 +17,21 @@ type YahooForexData = {
   sparkline: number[];
 }
 
+function createPair(
+  title: string,
+  data: YahooForexData,
+  href: string
+): ForexPair {
+  return {
+    title,
+    price: data.price,
+    change: data.change,
+    positive: data.positive,
+    sparkline: data.sparkline,
+    href,
+  };
+}
+
 async function getYahooForex(symbol: string): Promise<YahooForexData> {
   const res = await fetch(
     `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?range=1d&interval=5m`,
@@ -81,20 +96,6 @@ export default async function ForexPage() {
     getYahooForex("HKD=X"),
   ]);
 
-  function createPair(
-    title: string,
-    data: YahooForexData,
-    href: string
-  ): ForexPair {
-    return {
-      title,
-      price: data.price,
-      change: data.change,
-      positive: data.positive,
-      sparkline: data.sparkline,
-      href,
-    };
-  }
   const pairs: ForexPair[] = [
     createPair("🇺🇸🇯🇵 USD/JPY", usdjpy, "/markets/usdjpy"),
     createPair("🇪🇺🇺🇸 EUR/USD", eurusd, "/markets/eurusd"),

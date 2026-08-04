@@ -34,7 +34,7 @@ function createPair(
 
 async function getYahooForex(symbol: string): Promise<YahooForexData> {
   const res = await fetch(
-    `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?range=1d&interval=5m`,
+    `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?range=5d&interval=15m`,
     {
       next: { revalidate: 60 },
     }
@@ -42,7 +42,15 @@ async function getYahooForex(symbol: string): Promise<YahooForexData> {
 
   const data = await res.json();
   const meta = data.chart.result[0].meta;
-  const prices = data.chart.result[0].indicators.quote[0].close;
+  const rawPrices =
+    data.chart.result[0].indicators.quote?.[0]?.close ?? [];
+
+  const prices = rawPrices
+    .filter(
+      (price: number | null): price is number =>
+        typeof price === "number" && Number.isFinite(price)
+    )
+    .slice(-96);
   const price = meta.regularMarketPrice.toLocaleString("en-US");
   const changePercent =
     ((meta.regularMarketPrice - meta.previousClose) / meta.previousClose) * 100;

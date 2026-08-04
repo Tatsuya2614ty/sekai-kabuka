@@ -126,6 +126,11 @@ export default async function BondsPage() {
         france10y,
         canada10y,
         australia10y,
+        southKorea10y,
+        india10y,
+        italy10y,
+        spain10y,
+        switzerland10y,
     ] = await Promise.all([
         getYahooBond("%5EIRX"),
         getYahooBond("%5EFVX"),
@@ -137,6 +142,11 @@ export default async function BondsPage() {
         getFredBond("IRLTLT01FRM156N"),
         getFredBond("IRLTLT01CAM156N"),
         getFredBond("IRLTLT01AUM156N"),
+        getFredBond("IRLTLT01KRM156N"),
+        getFredBond("INDIRLTLT01STM"),
+        getFredBond("IRLTLT01ITM156N"),
+        getFredBond("IRLTLT01ESM156N"),
+        getFredBond("IRLTLT01CHM156N"),
     ]);
 
     const bonds: BondMarket[] = [
@@ -150,6 +160,11 @@ export default async function BondsPage() {
         createBond("🇫🇷 France 10-Year Bond Yield", france10y, "/markets/france10y"),
         createBond("🇨🇦 Canada 10-Year Bond Yield", canada10y, "/markets/canada10y"),
         createBond("🇦🇺 Australia 10-Year Bond Yield", australia10y, "/markets/australia10y"),
+        createBond("🇰🇷 South Korea 10-Year Bond Yield", southKorea10y, "/markets/southkorea10y"),
+        createBond("🇮🇳 India 10-Year Bond Yield", india10y, "/markets/india10y"),
+        createBond("🇮🇹 Italy 10-Year Bond Yield", italy10y, "/markets/italy10y"),
+        createBond("🇪🇸 Spain 10-Year Bond Yield", spain10y, "/markets/spain10y"),
+        createBond("🇨🇭 Switzerland 10-Year Bond Yield", switzerland10y, "/markets/switzerland10y"),
     ];
 
     return (

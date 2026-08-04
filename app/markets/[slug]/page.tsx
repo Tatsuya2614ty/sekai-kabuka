@@ -4,6 +4,7 @@ import { use, useEffect, useRef } from "react";
 import Navbar from "../../components/Navbar";
 import YahooDetailChart from "../../components/YahooDetailChart";
 import FredDetailChart from "../../components/FredDetailChart";
+import { title } from "process";
 
 const marketConfig = {
     // ====================
@@ -181,14 +182,6 @@ const marketConfig = {
     usdcny: { title: "USD/CNY", tradingViewSymbol: "FX_IDC:USDCNY" },
     usdhkd: { title: "USD/HKD", tradingViewSymbol: "FX:USDHKD" },
 
-    // ====================
-    // BONDS
-    // ====================
-
-    us3m: { title: "US 13-Week Treasury Bill", yahooSymbol: "^IRX" },
-    us5y: { title: "US 5-Year Treasury Yield", yahooSymbol: "^FVX" },
-    us30y: { title: "US 30-Year Treasury Yield", yahooSymbol: "^TYX" },
-    // ====================
     // BONDS
     // ====================
 
@@ -201,7 +194,11 @@ const marketConfig = {
     france10y: { title: "France 10-Year Bond Yield", fredSeriesId: "IRLTLT01FRM156N" },
     canada10y: { title: "Canada 10-Year Bond Yield", fredSeriesId: "IRLTLT01CAM156N" },
     australia10y: { title: "Australia 10-Year Bond Yield", fredSeriesId: "IRLTLT01AUM156N" },
-
+    southkorea10y: { title: "South Korea 10-Year Bond Yield", fredSeriesId: "IRLTLT01KRM156N" },
+    india10y: { title: "India 10-Year Bond Yield", fredSeriesId: "INDIRLTLT01STM" },
+    italy10y: { title: "Italy 10-Year Bond Yield", fredSeriesId: "IRLTLT01ITM156N" },
+    spain10y: { title: "Spain 10-Year Bond Yield", fredSeriesId: "IRLTLT01ESM156N" },
+    switzerland10y: { title: "Switzerland 10-Year Bond Yield", fredSeriesId: "IRLTLT01CHM156N" },
 };
 
 type MarketPageProps = {

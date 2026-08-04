@@ -47,7 +47,7 @@ export default function Navbar({ bottom = false }: NavbarProps) {
     <div className={navbarClassName}>
       <Link href="/">
         <button className={pathname === "/" ? "active" : ""}>
-          US Stocks
+          US Markets
         </button>
       </Link>
 
@@ -63,6 +63,12 @@ export default function Navbar({ bottom = false }: NavbarProps) {
         </button>
       </Link>
 
+      <Link href="/bonds">
+        <button className={pathname === "/bonds" ? "active" : ""}>
+          Bonds
+        </button>
+      </Link>
+
       <Link href="/crypto">
         <button className={pathname === "/crypto" ? "active" : ""}>
           Crypto
@@ -75,11 +81,7 @@ export default function Navbar({ bottom = false }: NavbarProps) {
         </button>
       </Link>
 
-      <Link href="/bonds">
-        <button className={pathname === "/bonds" ? "active" : ""}>
-          Bonds
-        </button>
-      </Link>
+
     </div>
   );
 }

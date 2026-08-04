@@ -361,7 +361,7 @@ h2 {
   }
 
   .navbar a:nth-child(n + 3) {
-    grid-column: span 2;
+    grid-column: span 3;
   }
 
   .navbar button {

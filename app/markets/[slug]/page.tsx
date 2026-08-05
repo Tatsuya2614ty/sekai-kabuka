@@ -12,7 +12,7 @@ const marketConfig = {
     // ====================
 
     sp500: { title: "S&P 500", tradingViewSymbol: "OANDA:SPX500USD" },
-    nasdaq: { title: "Nasdaq 100 (QQQ)", tradingViewSymbol: "NASDAQ:QQQ" },
+    nasdaq: { title: "Nasdaq Composite", yahooSymbol: "^IXIC" },
     sox: { title: "PHLX Semiconductor Index (SOXQ)", tradingViewSymbol: "NASDAQ:SOXQ" },
     dow: { title: "Dow Jones (DIA)", tradingViewSymbol: "AMEX:DIA" },
     russell: { title: "Russell 2000 (IWM)", tradingViewSymbol: "AMEX:IWM" },
@@ -20,9 +20,9 @@ const marketConfig = {
     us10y: { title: "US 10Y Treasury Yield", yahooSymbol: "^TNX" },
     nasdaq100: { title: "Nasdaq 100 ETF (QQQ)", tradingViewSymbol: "NASDAQ:QQQ" },
     sp100: { title: "S&P 100 ETF (OEF)", tradingViewSymbol: "AMEX:OEF" },
-    spmidcap400: { title: "S&P MidCap 400", tradingViewSymbol: "SP:MID" },
+    spmidcap400: { title: "S&P MidCap 400", yahooSymbol: "^MID" },
     spsmallcap600: { title: "S&P SmallCap 600 ETF (IJR)", tradingViewSymbol: "AMEX:IJR" },
-    nysecomposite: { title: "US Total Market ETF (VTI)", tradingViewSymbol: "AMEX:VTI" },
+    nysecomposite: { title: "NYSE Composite", yahooSymbol: "^NYA" },
     dowtransportation: { title: "Transportation ETF (IYT)", tradingViewSymbol: "AMEX:IYT" },// ====================
     // US SECTORS & ETFs
     // ====================
@@ -137,7 +137,7 @@ const marketConfig = {
     kcwheat: { title: "KC Wheat", yahooSymbol: "KE=F" },
     livecattle: { title: "Live Cattle", tradingViewSymbol: "CITYINDEX:LIVECATTLECFD" },
     leanhogs: { title: "Lean Hogs", tradingViewSymbol: "CITYINDEX:LEANHOGSCFD" },
-    feedercattle: { title: "Feeder Cattle — Aug 2026", tradingViewSymbol: "CMCMARKETS:FEEDERCATTLEQ2026" },
+   feedercattle: { title: "Feeder Cattle", yahooSymbol: "GF=F" },
     coffee: { title: "Coffee", tradingViewSymbol: "CAPITALCOM:COFFEE" },
     cocoa: { title: "Cocoa", tradingViewSymbol: "CAPITALCOM:COCOA" },
     sugar: { title: "Sugar — CANE ETF", tradingViewSymbol: "AMEX:CANE" },
